@@ -7,27 +7,38 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import streamlit as st
 import time
+import os
 from util import *
 
 st.title('Twitter Comments Scraper')
 st.write("Input the URL to a Tweet below and wait a couple minutes. Once complete you'll be able to donwload the comments as a CSV and explore some statistics.")
 
-chrome_options = Options()
-user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
-chrome_options.add_argument(f'user-agent={user_agent}')
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--no-sandbox")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--disable-features=NetworkService")
-chrome_options.add_argument("--window-size=1920x1080")
-chrome_options.add_argument("--disable-features=VizDisplayCompositor")
+# chrome_options = Options()
+# user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
+# chrome_options.add_argument(f'user-agent={user_agent}')
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--no-sandbox")
+# chrome_options.add_argument("--disable-dev-shm-usage")
+# chrome_options.add_argument("--disable-gpu")
+# chrome_options.add_argument("--disable-features=NetworkService")
+# chrome_options.add_argument("--window-size=1920x1080")
+# chrome_options.add_argument("--disable-features=VizDisplayCompositor")
+
+# @st.cache_resource
+# def get_driver():
+#     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+# wd = get_driver()
 
 @st.cache_resource
-def get_driver():
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-
-wd = get_driver()
+def installff():
+    os.system('sbase install geckodriver')
+    os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+_ = installff()
+from selenium.webdriver import FirefoxOptions
+opts = FirefoxOptions()
+opts.add_argument("--headless")
+wd = webdriver.Firefox(options=opts
+                            
 time.sleep(5)
 
 url = st.text_input('Use any twitter link')
