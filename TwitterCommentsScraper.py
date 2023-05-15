@@ -18,7 +18,7 @@ chrome_options.add_argument(f'user-agent={user_agent}')
 chrome_options.add_argument('--disable-gpu')
 chrome_options.add_argument("--headless")
 
-@st.experimental_singleton
+@st.cache_resource
 def get_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
