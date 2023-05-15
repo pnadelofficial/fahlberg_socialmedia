@@ -37,8 +37,8 @@ _ = installff()
 from selenium.webdriver import FirefoxOptions
 opts = FirefoxOptions()
 opts.add_argument("--headless")
-wd = webdriver.Firefox(options=opts
-                            
+wd = webdriver.Firefox(options=opts)
+
 time.sleep(5)
 
 url = st.text_input('Use any twitter link')
