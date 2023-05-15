@@ -15,9 +15,9 @@ def count_words(df, relative=False):
     
     tokenized_tweets = df['text'].apply(whitespace_tokenize).to_list()
 
-    es_stops = open('spanish.txt').readlines()
+    es_stops = open('aux_data/spanish.txt').readlines()
     es_stops = [s.strip() for s in es_stops]
-    en_stops = open('english.txt').readlines()
+    en_stops = open('aux_data/english.txt').readlines()
     en_stops = [s.strip() for s in en_stops]
     all_stops = [d for d in digits] + [p for p in punctuation] + es_stops + en_stops + ['rt', '\n', '\n\n', '…', '¡', '¿', '“', '”', '...', ' ', '', '🏼', '[empty]'] 
 
