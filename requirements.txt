@@ -1,0 +1,10 @@
+beautifulsoup4==4.12.2
+matplotlib==3.7.1
+openai_whisper==20230314
+pandas==1.5.3
+python_twitter==3.5
+selenium==4.9.1
+streamlit==1.21.0
+TikTokApi==5.2.2
+TikTokApi==5.2.2
+webdriver_manager==3.8.6
