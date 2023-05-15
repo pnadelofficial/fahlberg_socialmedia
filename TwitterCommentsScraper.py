@@ -23,11 +23,13 @@ def get_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
 wd = get_driver()
+time.sleep(5)
 
 url = st.text_input('Use any twitter link')
 if url !='':
     wd.get(url)
-
+    time.sleep(2)
+    
     tweets = []
     result = False
     old_height = wd.execute_script("return document.body.scrollHeight")
