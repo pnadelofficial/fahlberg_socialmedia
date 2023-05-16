@@ -13,6 +13,8 @@ from util import *
 st.title('Twitter Comments Scraper')
 st.write("Input the URL to a Tweet below and wait a couple minutes. Once complete you'll be able to donwload the comments as a CSV and explore some statistics.")
 
+url = st.text_input('Use any twitter link')
+
 # chrome_options = Options()
 # user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
 # chrome_options.add_argument(f'user-agent={user_agent}')
@@ -41,7 +43,6 @@ wd = webdriver.Firefox(options=opts)
 
 time.sleep(5)
 
-url = st.text_input('Use any twitter link')
 if url !='':
     wd.get(url)
     time.sleep(2)
