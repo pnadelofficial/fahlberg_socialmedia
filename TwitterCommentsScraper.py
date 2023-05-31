@@ -96,7 +96,7 @@ if url !='':
     st.success('Successfully scraped comments from this tweet!')
     
     df = pd.DataFrame(tweets).rename(columns={0:'date', 1:'acc_name', 2:'text'})
-    st.write(df)
+    df = df.drop_duplicates()
     df['date'] = pd.to_datetime(df['date'])
     csv = convert_df(df)
 
