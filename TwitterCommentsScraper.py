@@ -97,6 +97,7 @@ if url !='':
     
     df = pd.DataFrame(tweets).rename(columns={0:'date', 1:'acc_name', 2:'text'})
     df = df.drop_duplicates()
+    st.write(df)
     df['date'] = pd.to_datetime(df['date'])
     csv = convert_df(df)
 
