@@ -96,23 +96,24 @@ if url !='':
     st.success('Successfully scraped comments from this tweet!')
     
     df = pd.DataFrame(tweets).rename(columns={0:'date', 1:'acc_name', 2:'text'})
-    df['date'] = pd.to_datetime(df['date'])
-    csv = convert_df(df)
+    st.write(df)
+#     df['date'] = pd.to_datetime(df['date'])
+#     csv = convert_df(df)
 
-    st.download_button(
-    "Download Comments Here",
-    csv,
-    f"tweet_{url.split('/')[-1]}_comments.csv",
-    "text/csv",
-    key='download-csv'
-    )
+#     st.download_button(
+#     "Download Comments Here",
+#     csv,
+#     f"tweet_{url.split('/')[-1]}_comments.csv",
+#     "text/csv",
+#     key='download-csv'
+#     )
 
-    with st.expander("See some statistics"):
-        st.pyplot(df.groupby(pd.Grouper(key='date', freq='H')).count()['text'].plot(kind='bar', title='Frequency of Tweets over time').figure)
-        st.divider()
-        freq = count_words(df, relative=True)
-        freq = pd.DataFrame(freq).rename(columns={0:'word', 1:'relative_freq'})
-        st.pyplot(freq[:20].plot(x='word', y='relative_freq', kind='barh', title='Top 20 words by relative frequency').figure)
+#     with st.expander("See some statistics"):
+#         st.pyplot(df.groupby(pd.Grouper(key='date', freq='H')).count()['text'].plot(kind='bar', title='Frequency of Tweets over time').figure)
+#         st.divider()
+#         freq = count_words(df, relative=True)
+#         freq = pd.DataFrame(freq).rename(columns={0:'word', 1:'relative_freq'})
+#         st.pyplot(freq[:20].plot(x='word', y='relative_freq', kind='barh', title='Top 20 words by relative frequency').figure)
 
 st.markdown('<small>This tool is for educational purposes ONLY!</small>', unsafe_allow_html=True)
 st.markdown('<small>Assembled by Peter Nadel | TTS Research Technology</small>', unsafe_allow_html=True)        
